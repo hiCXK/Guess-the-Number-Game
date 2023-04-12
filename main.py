@@ -1,25 +1,27 @@
-from random import randrange
-
-
+from random import *
+a=None
 name=input("Please enter your name: ")
-x=int(input("Hello " + name + "!\nI have chosen a number[1,100]...can you guess it?\nEnter your number here: "))
-def again(x):
-    compare(x)
-def compare(x):
-    y=randrange(1,101)
+print("Hello " + name + "!\nI have chosen a number[1,100]...can you guess it?")
+x=int(input("Enter your number here: "))
+y=randint(1,100)
+def getnum():
+    x=int(input("Try again: "))
+    compare(x,y)
+def compare(x,y):
     if (y==x):
         print("YES! You got that right.")
-        return
+        a=input("Play again? Y/N: ") 
+        if a=="Y":
+            y=randint(1,100)
+            getnum()
+        if a=="N":
+            print("Have a great day " + name + "! Until next time...")
     elif(y>x):
         print("low")
-        again(x)
-        return
-    elif(y<x):
+        getnum()
+    else:
         print("high")
-        again(x)
-        return
-    return
-again(x)    
-
-    
-
+        getnum()
+        
+           
+getnum() 
